@@ -53,7 +53,7 @@ import jwt
 secret = '<YOUR_API_SECRET>'
 subdomain = '<YOUR_FEATURE_MONKEY_SUMDOMAIN>`
 
-def get_redirect_url(user):
+def get_redirect_url(...):
   user_data = {
       full_name: "<USER_FULLNAME>",
       email: "<EMAIL>",
@@ -104,7 +104,7 @@ var jwt = require('jsonwebtoken');
 var secret = '<YOUR_API_SECRET>'
 var subdomain = '<YOUR_FEATURE_MONKEY_SUMDOMAIN>`
 
-function get_redirect_url(user) {
+function get_redirect_url(.....) {
   var userData = {
       full_name: "<USER_FULLNAME>",
       email: "<EMAIL>",
@@ -128,8 +128,7 @@ public class FeatureMonkeySSO {
   private static final String Secret = '<YOUR_API_SECRET>'
   private static final String Subdomain = '<YOUR_FEATURE_MONKEY_SUMDOMAIN>`
 
-  public static String getRedirectUrl(User user) throws Exception {
-    HashMap<String, Object> userData = new HashMap<String, Object>();
+  public static String getRedirectUrl(....) throws Exception {
     userData.put("full_name", <USER_FULLNAME>);
     userData.put("email", <EMAIL>;
     userData.put("picture", <PICTURE>);
@@ -142,3 +141,55 @@ public class FeatureMonkeySSO {
 }
 ```
 
+## PHP
+
+### Install a JWT library
+
+```
+composer require firebase/php-jwt
+```
+
+### Generate tokens and redirect to url
+
+```
+use \Firebase\JWT\JWT;
+
+const secret = '<YOUR_API_SECRET>';
+const subdomain = '<YOUR_FEATURE_MONKEY_SUMDOMAIN>';
+
+function getRedirectUrl(....) {
+  $userData = [
+    'full_name' => <USER_FULLNAME>,
+    'email' => <EMAIL>,
+    'picture' => <PICTURE>,
+  ];
+  return "https//" + subdomain + "/sso/" + JWT::encode($userData, PrivateKey, 'HS256');
+}
+```
+
+## Ruby 
+
+### Install a JWT library
+
+```
+sudo gem install jwt 
+```
+
+### Generate tokens and redirect to url
+
+```
+require 'jwt'
+
+secret = '<YOUR_API_SECRET>'
+subdomain = '<YOUR_FEATURE_MONKEY_SUMDOMAIN>`
+
+def getRedirectUrl(....)
+  userData = {
+      full_name: "<USER_FULLNAME>",
+      email: "<EMAIL>",
+      picture: "<PICTURE>",
+  }
+
+   "https//" + subdomain + "/sso/" + JWT.encode(userData, PrivateKey, 'HS256')
+end
+```
