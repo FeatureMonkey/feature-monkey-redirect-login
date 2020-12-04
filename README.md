@@ -70,21 +70,25 @@ def get_redirect_url(...):
 
 ### Generate tokens and redirect to url
 
-```
+```golang
 import (
   "github.com/dgrijalva/jwt-go"
 )
 
-secret = '<YOUR_API_SECRET>'
-subdomain = '<YOUR_FEATURE_MONKEY_SUMDOMAIN>`
+const FeatureMonkeySecret = '<YOUR_API_SECRET>'
+const FeatureMonkeySubdomain = '<YOUR_FEATURE_MONKEY_SUBDOMAIN>'
 
-func get_redirect_url(user map[string]interface{}) (string, error) {
+func get_redirect_url() (string, error) {
   token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
       "full_name": "<USER_FULLNAME>",
       "email": "<EMAIL>",
-      "picture": "<PICTURE>",
+      "picture": "<PICTURE_URL>",
   })
-  return "http://" + subdomain + "/sso/" + jwt.encode(user_data, secret, algorithm='HS256') + token.SignedString([]byte(secret));
+  signature, err := token.SignedString([]byte(FeatureMonkeySecret))
+  if err != nil {
+      return "", err
+  }
+  return "https://" + FeatureMonkeySubdomain + "/sso/" + signature, nil;
 }
 ```
 
