@@ -57,7 +57,8 @@ def get_redirect_url(...):
   user_data = {
       full_name: "<USER_FULLNAME>",
       email: "<EMAIL>",
-      picture: "<PICTURE>",
+      picture: "<PICTURE>", //optional
+      redirect_to: "roadmap" //optional, (only supports roadmap as of today)
   }
   return "http://" + subdomain + "/sso/" + jwt.encode(user_data, secret, algorithm='HS256')
 ```
