@@ -30,7 +30,8 @@ Your users won't have to login again after being redirected to feature monkey.ðŸ
     var user_data = JSON.stringify({
       full_name: "<USER_FULLNAME>",
       email: "<EMAIL>",
-      picture: "<PICTURE>",
+      picture: "<PICTURE>", //optional
+      redirect_to: "roadmap" //optional, (only supports roadmap as of today)
     });
     //   add your secret
     var secret = "<YOUR_API_SECRET>";
@@ -83,7 +84,8 @@ func get_redirect_url() (string, error) {
   token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
       "full_name": "<USER_FULLNAME>",
       "email": "<EMAIL>",
-      "picture": "<PICTURE_URL>",
+      "picture": "<PICTURE>", //optional
+      "redirect_to": "roadmap" //optional, (only supports roadmap as of today)
   })
   signature, err := token.SignedString([]byte(FeatureMonkeySecret))
   if err != nil {
@@ -113,7 +115,8 @@ function get_redirect_url(.....) {
   var userData = {
       full_name: "<USER_FULLNAME>",
       email: "<EMAIL>",
-      picture: "<PICTURE>",
+      picture: "<PICTURE>", //optional
+      redirect_to: "roadmap" //optional, (only supports roadmap as of today)
   };
   return "https://" + subdomain + "/sso/" + jwt.sign(userData, secret, {algorithm: 'HS256'});
 }
@@ -136,7 +139,8 @@ public class FeatureMonkeySSO {
   public static String getRedirectUrl(....) throws Exception {
     userData.put("full_name", <USER_FULLNAME>);
     userData.put("email", <EMAIL>;
-    userData.put("picture", <PICTURE>);
+    userData.put("picture", <PICTURE>); //optional
+    userData.put("redirect_to, "roadmap"); //optional, (only supports roadmap as of today)
 
     return "https://" + Subdomain + "/sso/" + Jwts.builder()
                .setClaims(userData)
@@ -166,7 +170,9 @@ function getRedirectUrl(....) {
   $userData = [
     'full_name' => <USER_FULLNAME>,
     'email' => <EMAIL>,
-    'picture' => <PICTURE>,
+    'picture' => "<PICTURE>", //optional
+    'redirect_to' => "roadmap" //optional, (only supports roadmap as of today)
+
   ];
   return "https//" + subdomain + "/sso/" + JWT::encode($userData, PrivateKey, 'HS256');
 }
@@ -192,7 +198,8 @@ def getRedirectUrl(....)
   userData = {
       full_name: "<USER_FULLNAME>",
       email: "<EMAIL>",
-      picture: "<PICTURE>",
+      picture: "<PICTURE>", //optional
+      redirect_to: "roadmap" //optional, (only supports roadmap as of today)
   }
 
    "https//" + subdomain + "/sso/" + JWT.encode(userData, PrivateKey, 'HS256')
