@@ -7,7 +7,9 @@ Your users won't have to login again after being redirected to feature monkey.ðŸ
 ## Steps
 
 1. Get your `YOUR_API_SECRET` from feature monkey team page.
-2. Generate user data with mandatory `full_name` and `email` and optional `picture`, and `redirect_to` fields.
+2. Generate user data with 
+   - mandatory: `full_name` and `email`
+   - optional: `picture`, and `redirect_to` fields.
 3. `picture` field: pass url for user image. We will generate custom image with full name initials if not present 
 4. `redirect_to` field: pass `roadmap` as value for directing to roadmap. `redirect_to: ""` will redirect_to home page.  
 5. Use any [HS256](https://jwt.io/) algorithm client and generate `token` with your user data and `SECRET`. 
